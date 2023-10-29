@@ -37,7 +37,7 @@ green = (0 / 255, 158 / 255, 60 / 255)
 
 def abschliessen():
     # schluss() #woerterbuch loeschen
-    datei = open('woerterbuch.txt', 'w')
+    datei = open('woerterbuch.txt', 'w', encoding='utf-8')
     datei.close()
     build.close()
 
@@ -86,7 +86,7 @@ class MainScreen(Screen):
 
 
     def erschaffeWoerterbuch(self, *args):    # Aufbau eines fremdsprache-deutschen Wörterbuchs
-        datei = open('woerterbuch.txt', 'a')
+        datei = open('woerterbuch.txt', 'a', encoding='utf-8')
         if self.wort.text == '':
             datei.close()
         elif self.wort.text == ' ':

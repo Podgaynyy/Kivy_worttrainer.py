@@ -35,11 +35,11 @@ red = (255 / 255, 67 / 255, 67 / 255)
 green = (0 / 255, 158 / 255, 60 / 255)
 
 
-def abschliessen():
+def abschliessen(*args):
     # schluss() #woerterbuch loeschen
     datei = open('woerterbuch.txt', 'w')
     datei.close()
-    build.close()
+    .close()
 
 class MainApp(App):
     def build(self):
@@ -170,7 +170,7 @@ class SecondScreen(Screen):
         else:
             self.resume.text ="Leider falsch!"
             self.antwort.text = ""
-            listeChoice()
+            self.listeChoice()
 
     def to_main_scrn(self, *args):  # together with the click of the button, it transmits info about itself.
         # In order not to pop up an error, I add *args to the function

@@ -1,5 +1,1 @@
-asd dsa
-cat Katze
-dog Hund
-cat Katze
-boy Junge
+cat кошка
