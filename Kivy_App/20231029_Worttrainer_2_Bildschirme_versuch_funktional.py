@@ -77,7 +77,7 @@ class MainScreen(Screen):
         gl2 = GridLayout(cols=1, rows=3, spacing=5, height=300, size_hint=(1, 0.5), padding = 40)
         # rest 50% uebernimmt Layout mit 3 Buttons Speichern, Prueffen und Abbrechen
         gl2.add_widget(Button(text="Speichern", on_press = self.erschaffeWoerterbuch))
-        gl2.add_widget(Button(text="Prüfen", on_press=self.to_second_scrn))
+        gl2.add_widget(Button(text="Prufen", on_press=self.to_second_scrn))
         gl2.add_widget(Button(text="Abbrechen", on_press = abschliessen))
         self.add_widget(main_layout)  # adding main_layout on screen
         main_layout.add_widget(gl)
@@ -141,8 +141,8 @@ class SecondScreen(Screen):
         gl2.add_widget(self.danksagung)
 
         gl3 = GridLayout(cols=1, spacing=5, size_hint=(1, 0.5))
-        gl3.add_widget(Button(text="Prüfen", on_press = self.pruefung))
-        gl3.add_widget(Button(text="Prüfung Starten", on_press=self.listeChoice))
+        gl3.add_widget(Button(text="Prufen", on_press = self.pruefung))
+        gl3.add_widget(Button(text="Prufung Starten", on_press=self.listeChoice))
         gl3.add_widget(Button(text="Programm schliessen", on_press = abschliessen))
 
 
