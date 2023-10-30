@@ -39,7 +39,12 @@ def abschliessen():
     # schluss() #woerterbuch loeschen
     datei = open('woerterbuch.txt', 'w', encoding='utf-8')
     datei.close()
-    build.close()
+
+def sicherabschliessen():
+    datei = open('woerterbuch.txt', 'w', encoding='utf-8')
+    datei.close()
+    App.close()
+
 
 class MainApp(App):
     def build(self):
@@ -78,7 +83,7 @@ class MainScreen(Screen):
         # rest 50% uebernimmt Layout mit 3 Buttons Speichern, Prueffen und Abbrechen
         gl2.add_widget(Button(text="Speichern", on_press = self.erschaffeWoerterbuch))
         gl2.add_widget(Button(text="Prufen", on_press=self.to_second_scrn))
-        gl2.add_widget(Button(text="Abbrechen", on_press = abschliessen))
+        gl2.add_widget(Button(text="Abbrechen", on_press = sicherabschliessen))
         self.add_widget(main_layout)  # adding main_layout on screen
         main_layout.add_widget(gl)
         main_layout.add_widget(gl2)
@@ -87,9 +92,9 @@ class MainScreen(Screen):
 
     def erschaffeWoerterbuch(self, *args):    # Aufbau eines fremdsprache-deutschen Wörterbuchs
         datei = open('woerterbuch.txt', 'a', encoding='utf-8')
-        if self.wort.text == '':
+        if self.wort.text == '' or self.bedeutung.text == '':
             datei.close()
-        elif self.wort.text == ' ':
+        elif self.wort.text == ' 'or self.bedeutung.text == '':
             datei.close()
         else:
             datei.write(self.wort.text + " " + self.bedeutung.text + "\n")
@@ -143,7 +148,7 @@ class SecondScreen(Screen):
         gl3 = GridLayout(cols=1, spacing=5, size_hint=(1, 0.5), padding=40)
         gl3.add_widget(Button(text="Prufen", on_press = self.pruefung))
         gl3.add_widget(Button(text="Prufung Starten", on_press=self.listeChoice))
-        gl3.add_widget(Button(text="Programm schliessen", on_press = abschliessen))
+        gl3.add_widget(Button(text="Programm schliessen", on_press = sicherabschliessen))
 
 
         second_layout.add_widget(gl)
@@ -158,6 +163,7 @@ class SecondScreen(Screen):
         else:
             self.danksagung.text = "Abgeschlossen! \n   Alles gelernt."
             self.abfrage.text = ""
+            abschliessen()
 
     def pruefung(self, *args):
         global liste
@@ -170,7 +176,7 @@ class SecondScreen(Screen):
         else:
             self.resume.text ="Leider falsch!"
             self.antwort.text = ""
-            listeChoice()
+            self.listeChoice()
 
     def to_main_scrn(self, *args):  # together with the click of the button, it transmits info about itself.
         # In order not to pop up an error, I add *args to the function
