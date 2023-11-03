@@ -40,10 +40,11 @@ def abschliessen():
     datei = open('woerterbuch.txt', 'w', encoding='utf-8')
     datei.close()
 
+
 def sicherabschliessen():
     datei = open('woerterbuch.txt', 'w', encoding='utf-8')
     datei.close()
-    App.close()
+
 
 
 class MainApp(App):
@@ -83,7 +84,7 @@ class MainScreen(Screen):
         # rest 50% uebernimmt Layout mit 3 Buttons Speichern, Prueffen und Abbrechen
         gl2.add_widget(Button(text="Speichern", on_press = self.erschaffeWoerterbuch))
         gl2.add_widget(Button(text="Prufen", on_press=self.to_second_scrn))
-        gl2.add_widget(Button(text="Abbrechen", on_press = sicherabschliessen))
+        gl2.add_widget(Button(text="Abbrechen", on_press = sicherabschliessen()))
         self.add_widget(main_layout)  # adding main_layout on screen
         main_layout.add_widget(gl)
         main_layout.add_widget(gl2)
@@ -130,7 +131,8 @@ class SecondScreen(Screen):
         self.name = 'Second'
         second_layout = BoxLayout(orientation='vertical', spacing=10, padding = 25)
         self.add_widget(second_layout)
-        second_layout.add_widget(Label(text="Wörte lernen", padding=25, font_size=40, height=50, size_hint=(1, 0.15)))
+        second_layout.add_widget(Label(text="Wörte lernen", padding=25, font_size=40,
+                                       height=50, size_hint=(1, 0.15)))
         # um in eine Zeile verschiedene Anzahl von Spalten zu haben
         # nehme ich BoxLayout als Grundwerkstoff
         gl = GridLayout(cols=1, spacing=5, size_hint=(1, 0.07))
